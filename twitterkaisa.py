@@ -42,7 +42,11 @@ async def main():
     # send_image(api, [1381959863958396938])
     while True:
         status = api.rate_limit_status()
-        print(api.rate_limit_status())
+        #print(api.rate_limit_status())
+        print(status['resources']['followers']['/followers/ids'])
+        print(status['resources']['statuses']['/statuses/user_timeline'])
+        print(status['resources']['statuses']['/statuses/mentions_timeline'])
+        print(status['resources']['friends']['/friends/list'])
         mentions = get_mentions(api)
         await command_handler(api, conn, mentions)
         follow_back(api)
